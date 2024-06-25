@@ -1,0 +1,125 @@
+:root {
+  --primary-dark: #0f6a90;
+  --primary-light: #f0f4f5;
+
+  --secondary-dark: #729e2a;
+  --secondary-light: #f0f4f5;
+
+  --tertiary-dark: #d84624;
+  --tertiary-light: #f0f4f5;
+
+  --background-image: url(../static/background.jpg);
+  --icon-image: url(../static/ff_logo.jpg);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Garamond", "Constantia", sans-serif;
+  font-size: 20px;
+  color: var(--primary-dark);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-light);
+  background-image: var(--background-image);
+  background-size: cover;
+}
+
+main {
+  margin: 0.5em;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Constantia";
+}
+
+.page {
+  width: 100%;
+  max-width: 800px;
+  padding: 1em;
+  max-height: min-content;
+  background-color: var(--secondary-light);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.page img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  border: 2px solid var(--tertiary-dark);
+}
+
+.page h2 {
+  font-size: xx-large;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: var(--icon-image);
+  background-size: cover;
+}
+
+.heading {
+  text-align: center;
+}
+
+h3 {
+  color: var(--secondary-dark);
+  font-style: italic;
+}
+
+button {
+  padding: 1em 10em;
+  width: auto;
+  font-family: "Constantia";
+  font-size: large;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--primary-dark);
+  border-radius: 15px;
+  border-color: var(--tertiary-dark);
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--tertiary-dark);
+}
+
+@media (max-width: 414px) {
+  body {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  button {
+    padding: 1em 2em;
+  }
+
+  form,
+  .page {
+    width: 95%;
+  }
+}

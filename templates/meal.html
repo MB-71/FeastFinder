@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="header-content">
+      <div class="logo"></div>
+      <div class="heading">
+        <h1>Welcome to FeastFinder!</h1>
+        <h3>A random recipe finder</h3>
+        <form method="post">
+            <button type="submit">Get a Feast</button>
+        </form>
+        </div>
+    </div>
+    {% if meal %}
+        <div id="recipe">
+            <h2>{{ meal.strMeal }}</h2>
+            <img src="{{ meal.strMealThumb }}" alt="{{ meal.strMeal }}" />
+            <p><strong>Category:</strong> {{ meal.strCategory }}</p>
+            <p><strong>Area:</strong> {{ meal.strArea }}</p>
+            <p><strong>Tags:</strong> {{ meal.strTags }}</p>
+            <h3>Ingredients:</h3>
+            <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <h3>Instructions:</h3>
+            <p>{{ meal.strInstructions }}</p>
+            {% if meal.strYoutube %}
+                <p><strong>YouTube:</strong> <a href="{{ meal.strYoutube }}" target="_blank">{{meal.strYoutube}}</a></p>
+            {% endif %}
+            {% if meal.strSource %}
+                <p><strong>Source:</strong> <a href="{{ meal.strSource }}" target="_blank">{{ meal.strSource }}</a></p>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
