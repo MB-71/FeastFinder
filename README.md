@@ -6,19 +6,19 @@
 
 3. Git Clone Repo:
     ```
-        git clone https://gitlab.com/brewer7/cloud-brewer-brewer7.git
+        git clone https://github.com/MB-71/FeastFinder.git
     ```
     or ssh:
     ```
-        git clone git@gitlab.com:brewer7/cloud-brewer-brewer7.git
+        git clone git@github.com:MB-71/FeastFinder.git
     ```
 
-4. Login to GitLab
+4. Login to ~~GitLab~~ GitHub
 
-5. Change into project directory:
-    ```
+~~5. Change into project directory:~~
+    ~~```
         cd cloud-brewer-brewer7/final/
-    ```
+    ```~~
 
 6. Docker Commands:
     - Build: 
