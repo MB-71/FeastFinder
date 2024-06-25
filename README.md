@@ -15,48 +15,52 @@
 
 4. Login to ~~GitLab~~ GitHub
 
-~~5. Change into project directory:~~
-    ~~```
+5. Change into project directory:
+
+    ~~`
         cd cloud-brewer-brewer7/final/
-    ```~~
+    `~~
+
+    ```
+        cd FeastFinder/
+    ```
 
 6. Docker Commands:
     - Build: 
     ```
-        docker build -f Dockerfile -t final .
+        docker build -f Dockerfile -t feastfinder .
     ```
     - Tag: 
     ```
-        docker tag final:latest gcr.io/${GOOGLE_CLOUD_PROJECT}/final
+        docker tag feastfinder:latest gcr.io/${GOOGLE_CLOUD_PROJECT}/feastfinder
     ```
     - Push:
     ```
-        docker push gcr.io/${GOOGLE_CLOUD_PROJECT}/final
+        docker push gcr.io/${GOOGLE_CLOUD_PROJECT}/feastfinder
     ```
     - Submit to Google Cloud Build:
     ```
-        gcloud builds submit --timeout=900 --tag gcr.io/${GOOGLE_CLOUD_PROJECT}/final
+        gcloud builds submit --timeout=900 --tag gcr.io/${GOOGLE_CLOUD_PROJECT}/feastfinder
     ```
 
 7. Create IAM service account and add policy:
-    - 
     ```
-        gcloud iam service-accounts create finalfeast
+        gcloud iam service-accounts create feastfinder
     ```
     - Add IAM policy bindings
     ```
-        gcloud projects add-iam-policy-binding cloud-brewer7 \
-            --member="serviceAccount:finalfeast@cloud-brewer7.iam.gserviceaccount.com" \
+        gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} \
+            --member="serviceAccount:feastfinder@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com" \
             --role="roles/run.invoker"
-        gcloud projects add-iam-policy-binding cloud-brewer7 \
-            --member="serviceAccount:finalfeast@cloud-brewer7.iam.gserviceaccount.com" \
+        gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} \
+            --member="serviceAccount:feastfinder@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com" \
             --role="roles/storage.admin"
      ```
 
 8. To deploy run: 
     ```
-        gcloud run deploy feastfinder --image gcr.io/${GOOGLE_CLOUD_PROJECT}/final \
-            --service-account finalfeast@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com \
+        gcloud run deploy feastfinder --image gcr.io/${GOOGLE_CLOUD_PROJECT}/feastfinder \
+            --service-account feastfinder@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com \
             --region us-west1 --allow-unauthenticated
     ```
 
@@ -68,11 +72,11 @@
     
 2. Remove the container image:
     ```
-        gcloud container images delete gcr.io/${GOOGLE_CLOUD_PROJECT}/final
+        gcloud container images delete gcr.io/${GOOGLE_CLOUD_PROJECT}/feastfinder
         docker rmi -f $(docker images -q)
     ```
 
 3. Remove Service Account:
     ```
-        gcloud iam service-accounts delete finalfeast@cloud-brewer7.iam.gserviceaccount.com
+        gcloud iam service-accounts delete feastfinder@cloud-brewer7.iam.gserviceaccount.com
     ```
